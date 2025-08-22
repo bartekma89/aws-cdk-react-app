@@ -4,5 +4,5 @@ cdk.out
 spaces.http
 
 .vscode/*
-
+space-finder/.vscode/launch.json
 launch.json
