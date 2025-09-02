@@ -5,6 +5,7 @@ import {
   RestApi,
   AuthorizationType,
   MethodOptions,
+  Cors,
 } from "aws-cdk-lib/aws-apigateway";
 import { IUserPool } from "aws-cdk-lib/aws-cognito";
 import { Construct } from "constructs";
@@ -18,7 +19,13 @@ export class ApiStack extends Stack {
   constructor(scope: Construct, id: string, props: ApiStackProps) {
     super(scope, id, props);
 
-    const api = new RestApi(this, "spaces-api");
+    const api = new RestApi(this, "spaces-api", {
+      defaultCorsPreflightOptions: {
+        allowOrigins: Cors.ALL_ORIGINS,
+        allowMethods: Cors.ALL_METHODS,
+        allowHeaders: Cors.DEFAULT_HEADERS,
+      },
+    });
 
     const authorizer = new CognitoUserPoolsAuthorizer(
       this,

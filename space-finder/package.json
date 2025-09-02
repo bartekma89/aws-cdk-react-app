@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --all --outputs-file outputs.json"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
